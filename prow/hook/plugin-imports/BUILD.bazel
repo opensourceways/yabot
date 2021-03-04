@@ -5,5 +5,5 @@ go_library(
     srcs = ["plugin-imports.go"],
     importpath = "github.com/opensourceways/yabot/prow/hook/plugin-imports",
     visibility = ["//visibility:public"],
-    deps = ["//prow/plugins/lgtm"],
+    deps = ["//prow/plugins/lgtm:go_default_library"],
 )
