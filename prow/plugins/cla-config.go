@@ -12,7 +12,11 @@ func validateCLA(c []CLA) error {
 		return nil
 	}
 
-	_, err := golangsdk.BuildRequestBody(c, "")
+	cfg := struct {
+		CLA []CLA `json:"cla,omitempty"`
+	}{CLA: c}
+
+	_, err := golangsdk.BuildRequestBody(cfg, "")
 	return err
 }
 
