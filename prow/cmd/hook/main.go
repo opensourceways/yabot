@@ -221,9 +221,9 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {})
 
 	// For /hook, handle a webhook normally.
-	http.Handle("/hook", server)
+	http.Handle("/github-hook", server)
 	// Serve plugin help information from /plugin-help.
-	http.Handle("/plugin-help", pluginhelp.NewHelpAgent(pluginAgent, githubClient))
+	http.Handle("/github-plugin-help", pluginhelp.NewHelpAgent(pluginAgent, githubClient))
 
 	httpServer := &http.Server{Addr: ":" + strconv.Itoa(o.port)}
 
