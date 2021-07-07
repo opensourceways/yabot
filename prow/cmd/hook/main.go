@@ -18,6 +18,7 @@ package main
 
 import (
 	"flag"
+	"github.com/opensourceways/yabot/prow/client"
 	"net/http"
 	"os"
 	"strconv"
@@ -131,6 +132,11 @@ func main() {
 	if err != nil {
 		logrus.WithError(err).Fatal("Error getting GitHub client.")
 	}
+	yabotGithubClient, err := client.NewClientWithSecretAndLogFields(secretAgent, logrus.Fields{}, o.github.TokenPath)
+	if err != nil {
+		logrus.WithError(err).Fatal("Error getting GitHub client.")
+	}
+
 	gitClient, err := o.github.GitClient(secretAgent, o.dryRun)
 	if err != nil {
 		logrus.WithError(err).Fatal("Error getting Git client.")
@@ -190,6 +196,7 @@ func main() {
 		SlackClient:               slackClient,
 		OwnersClient:              ownersClient,
 		BugzillaClient:            bugzillaClient,
+		YabotGitHubClient:         yabotGithubClient,
 	}
 
 	promMetrics := hook.NewMetrics()
