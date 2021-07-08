@@ -18,7 +18,6 @@ package main
 
 import (
 	"flag"
-	"github.com/opensourceways/yabot/prow/client"
 	"net/http"
 	"os"
 	"strconv"
@@ -38,6 +37,7 @@ import (
 	"k8s.io/test-infra/prow/repoowners"
 	"k8s.io/test-infra/prow/slack"
 
+	"github.com/opensourceways/yabot/prow/client"
 	"github.com/opensourceways/yabot/prow/hook"
 	pluginhelp "github.com/opensourceways/yabot/prow/pluginhelp/hook"
 	"github.com/opensourceways/yabot/prow/plugins"

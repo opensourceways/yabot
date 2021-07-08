@@ -22,7 +22,7 @@ type RepositoryAPI interface {
 
 // PullRequestAPI interface for pull request related API actions
 type PullRequestAPI interface {
-	ListPRCommits(owner, repo string, number int) ([]*github.Commit, error)
+	ListPRCommits(owner, repo string, number int) ([]*github.RepositoryCommit, error)
 	GetPullRequest(owner, repo string, number int) (*github.PullRequest, error)
 	GetPullRequestChanges(owner, repo string, number int) ([]*github.CommitFile, error)
 }

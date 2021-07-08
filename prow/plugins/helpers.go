@@ -1,8 +1,9 @@
 package plugins
 
 import (
-	sdk "github.com/google/go-github/v36/github"
 	"strings"
+
+	sdk "github.com/google/go-github/v36/github"
 )
 
 // HasLabel checks if label is in the label set "issueLabels".

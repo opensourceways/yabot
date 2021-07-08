@@ -6,18 +6,18 @@ import (
 )
 
 // ListPRCommits lists the all of commits in a pull request.
-func (c *client) ListPRCommits(owner, repo string, number int) ([]*github.Commit, error) {
+func (c *client) ListPRCommits(owner, repo string, number int) ([]*github.RepositoryCommit, error) {
 	action := "ListPRCommits"
 	logDuration := c.log(action, owner, repo, number)
 	defer logDuration()
-	var commits []*github.Commit
+	var commits []*github.RepositoryCommit
 	err := doPaginatedRequest(
 		func(page, perPage int) (interface{}, *github.Response, error) {
 			opt := &github.ListOptions{Page: page, PerPage: perPage}
 			return c.PullRequests.ListCommits(context.Background(), owner, repo, number, opt)
 		},
 		func(obj interface{}) {
-			if v, ok := obj.([]*github.Commit); ok {
+			if v, ok := obj.([]*github.RepositoryCommit); ok {
 				commits = append(commits, v...)
 			}
 		})
