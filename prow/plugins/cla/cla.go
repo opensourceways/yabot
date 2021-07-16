@@ -52,7 +52,7 @@ type githubClient interface {
 }
 
 func handleGenericCommentEvent(pc plugins.Agent, e github.GenericCommentEvent) error {
-	return handleGenericComment(pc.YabotGithubClient, pc.PluginConfig, pc.Logger, e)
+	return handleGenericComment(pc.GoGithubClient, pc.PluginConfig, pc.Logger, e)
 }
 
 func handleGenericComment(gc githubClient, config *plugins.Configuration, log *logrus.Entry, e github.GenericCommentEvent) error {
@@ -126,7 +126,7 @@ func handleGenericComment(gc githubClient, config *plugins.Configuration, log *l
 func handlePullRequestEvent(pc plugins.Agent, pre github.PullRequestEvent) error {
 	return handlePullRequest(
 		pc.Logger,
-		pc.YabotGithubClient,
+		pc.GoGithubClient,
 		pc.PluginConfig,
 		&pre,
 	)

@@ -132,7 +132,7 @@ func main() {
 	if err != nil {
 		logrus.WithError(err).Fatal("Error getting GitHub client.")
 	}
-	yabotGithubClient, err := client.NewClientWithSecretAndLogFields(secretAgent, logrus.Fields{}, o.github.TokenPath)
+	goGithubClient, err := client.NewClientWithSecretAndLogFields(secretAgent, logrus.Fields{}, o.github.TokenPath)
 	if err != nil {
 		logrus.WithError(err).Fatal("Error getting GitHub client.")
 	}
@@ -196,7 +196,7 @@ func main() {
 		SlackClient:               slackClient,
 		OwnersClient:              ownersClient,
 		BugzillaClient:            bugzillaClient,
-		YabotGitHubClient:         yabotGithubClient,
+		GoGitHubClient:            goGithubClient,
 	}
 
 	promMetrics := hook.NewMetrics()
